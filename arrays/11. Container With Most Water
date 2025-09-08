@@ -1,0 +1,24 @@
+class Solution {
+    public int maxArea(int[] height) {
+
+        int max= Integer.MIN_VALUE;
+        int curr_max= Integer.MIN_VALUE;
+        int left=0;
+        int right=height.length-1;
+
+        while(left<right){
+           int leftCon= height[left];
+           int rightCon= height[right];
+
+           if(leftCon<=rightCon){
+            curr_max= leftCon*(right-left);
+            left++;
+           }else{
+            curr_max=rightCon*(right-left);
+            right--;
+           }
+           max=Math.max(max,curr_max);
+        }
+        return max;
+    }
+}
